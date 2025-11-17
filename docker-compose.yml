@@ -1,2 +1,59 @@
 version: "3.9"
-services:{}
+
+services:
+  postgres:
+    image: postgres:14
+    environment:
+      POSTGRES_USER: strapi
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: strapi
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+  strapi:
+    build: ./backend
+    environment:
+      NODE_ENV: development
+      DATABASE_CLIENT: postgres
+      DATABASE_HOST: postgres
+      DATABASE_PORT: 5432
+      DATABASE_NAME: strapi
+      DATABASE_USERNAME: strapi
+      DATABASE_PASSWORD: password
+      APP_KEYS: someRandomAppKey1,someRandomAppKey2
+      API_TOKEN_SALT: someRandomSalt
+      ADMIN_JWT_SECRET: someAdminJwtSecret
+      JWT_SECRET: someJwtSecret
+    ports:
+      - "1337:1337"
+    depends_on:
+      - postgres
+    volumes:
+      - ./backend:/srv/app
+
+  nuxt:
+    build: ./frontend
+    environment:
+      NUXT_PORT: 3000
+      NUXT_HOST: 0.0.0.0
+    ports:
+      - "3000:3000"
+    depends_on:
+      - strapi
+    volumes:
+      - ./frontend:/app
+
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - nuxt
+      - strapi
+
+volumes:
+  postgres-data:

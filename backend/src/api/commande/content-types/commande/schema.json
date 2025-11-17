@@ -1,0 +1,50 @@
+{
+  "kind": "collectionType",
+  "collectionName": "commandes",
+  "info": {
+    "singularName": "commande",
+    "pluralName": "commandes",
+    "displayName": "Commande"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "numero": {
+      "type": "string",
+      "required": true
+    },
+    "montant": {
+      "type": "decimal",
+      "required": true
+    },
+    "etat": {
+      "type": "enumeration",
+      "enum": [
+        "en_attente",
+        "paye",
+        "pret",
+        "retire"
+      ],
+      "default": "en_attente"
+    },
+    "produits": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::produit.produit"
+    },
+    "menu": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::menu.menu"
+    },
+    "creneau": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::creneau.creneau"
+    },
+    "codeRetrait": {
+      "type": "string"
+    }
+  }
+}

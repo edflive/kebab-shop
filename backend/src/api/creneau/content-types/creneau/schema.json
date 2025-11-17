@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "creneaux",
+  "info": {
+    "singularName": "creneau",
+    "pluralName": "creneaux",
+    "displayName": "Cr\u00e9neau"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "heure": {
+      "type": "string",
+      "required": true
+    },
+    "placesMax": {
+      "type": "integer",
+      "required": true
+    },
+    "placesPrises": {
+      "type": "integer",
+      "default": 0
+    }
+  }
+}

@@ -1,1 +1,16 @@
-{"name": "backend","dependencies": {}}
+{
+  "name": "kebab-shop-backend",
+  "version": "1.0.0",
+  "description": "Strapi backend for Kebab Shop",
+  "scripts": {
+    "develop": "strapi develop",
+    "start": "strapi start",
+    "build": "strapi build"
+  },
+  "dependencies": {
+    "@strapi/strapi": "4.24.3",
+    "pg": "^8.11.5",
+    "pg-connection-string": "^2.6.2",
+    "stripe": "^16.0.0"
+  }
+}

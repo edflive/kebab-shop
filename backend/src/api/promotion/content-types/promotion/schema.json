@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "promotions",
+  "info": {
+    "singularName": "promotion",
+    "pluralName": "promotions",
+    "displayName": "Promotion"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "titre": {
+      "type": "string",
+      "required": true
+    },
+    "pourcentage": {
+      "type": "integer",
+      "required": true
+    },
+    "heureDebut": {
+      "type": "string"
+    },
+    "heureFin": {
+      "type": "string"
+    },
+    "menus": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::menu.menu"
+    }
+  }
+}

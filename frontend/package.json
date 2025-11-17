@@ -1,1 +1,14 @@
-{"name": "frontend","dependencies": {}}
+{
+  "name": "kebab-shop-frontend",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "nuxt dev",
+    "build": "nuxt build",
+    "start": "nuxt start"
+  },
+  "dependencies": {
+    "nuxt": "^3.13.0",
+    "@apollo/client": "^3.11.0",
+    "graphql": "^16.9.0"
+  }
+}
